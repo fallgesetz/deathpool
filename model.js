@@ -11,6 +11,9 @@ Meteor.methods({
 
 	'createUserList' : function(user_id, list) {
 		// TODO: sanitize?
-		UserList.insert({'user_id' : user_id,
-				 'list' : list});
+		if (!this.doesUserHaveList) {
+			UserList.insert({'user_id' : user_id,
+					 'list' : list});
+		}
+	},
 });

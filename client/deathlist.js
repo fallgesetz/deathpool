@@ -24,7 +24,16 @@ Template.loggedin.events({
 		$('#deathol li').each(function() {
 			list.push( $(this).text() );
 		});
-		console.log(Meteor.userId());
-		console.log(list);
+		Meteor.call('createUserList', Meteor.userId(), list);
 	},
 });
+
+Template.loggedin.helpers({
+	'doesUserHaveList' : function () {
+		return UserList.findOne({'user_id': Meteor.userId()});
+	},
+});
+
+Template.loggedin.user_list = function() {
+	return UserList.findOne({'user_id': Meteor.userId()})['list'];
+};
