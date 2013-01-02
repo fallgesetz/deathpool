@@ -1,0 +1,31 @@
+<head>
+  <title>deathlist</title>
+</head>
+
+<body>
+{{#if currentUser}}
+  {{> loggedin}}
+{{else}}
+  {{> login}}
+{{/if}}
+</body>
+
+<template name="login">
+<div class="container">
+  <div class="hero-unit">
+    <div>
+      <h1>
+	Deathpool
+      </h1>
+      <div>
+	Fantasy Football for the Morbid.
+      </div>
+    </div>
+	{{loginButtons}}
+  </div>
+</div>
+</template>
+
+<template name="loggedin">
+You ahve loggedin
+</template>
